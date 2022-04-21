@@ -1,0 +1,10 @@
+<launch>
+
+  <include file="$(find tiago_gazebo)/launch/tiago_gazebo.launch">
+    <arg name="public_sim" value="true"/>
+  </include>
+
+  <include file="$(find pal_navigation_cfg_tiago)/launch/localization_fake.launch">
+  </include>
+
+</launch>
