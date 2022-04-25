@@ -24,7 +24,7 @@
 - git:
     local-name: metacontrol_move_base_configurations
     uri: https://github.com/MRamirez25/metacontrol_move_base_configurations
-    version: master
+    version: nav_quality
 - git:
     local-name: mros1_reasoner
     uri: https://github.com/MRamirez25/mc_mros_reasoner.git
