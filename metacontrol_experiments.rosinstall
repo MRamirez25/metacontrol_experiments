@@ -11,26 +11,23 @@
     uri: https://github.com/rosin-project/brass_gazebo_battery.git
 - git:
     local-name: metacontrol_msgs
-    uri: https://github.com/rosin-project/metacontrol_msgs
+    uri: https://github.com/JWijkhuizen/metacontrol_msgs
+    version: nav_quality
 - git:
     local-name: rosgraph_monitor
-    uri: https://github.com/rosin-project/rosgraph_monitor
-    version: safety_observer
+    uri: https://github.com/JWijkhuizen/rosgraph_monitor
+    version: nav_quality
 - git:
     local-name: ros_graph_parser
     uri: https://github.com/ipa-nhg/ros_graph_parser
     version: SoSymPaper
 - git:
     local-name: metacontrol_move_base_configurations
-    uri: https://github.com/rosin-project/metacontrol_move_base_configurations
+    uri: https://github.com/MRamirez25/metacontrol_move_base_configurations
     version: master
 - git:
     local-name: mros1_reasoner
-    uri: https://github.com/tud-cor/mc_mros_reasoner.git
-    version: master
-- git:
-    local-name: metacontrol_msgs
-    uri: https://github.com/rosin-project/metacontrol_msgs
+    uri: https://github.com/MRamirez25/mc_mros_reasoner.git
     version: master
 - git:
     local-name: mc_mdl_tomasys
@@ -52,4 +49,6 @@
     local-name: cob_command_tools
     uri: https://github.com/marioney/cob_command_tools.git
     version: metacontrol_models
-
+- git:
+    local-name: mros_quality_models
+    uri: https://github.com/JWijkhuizen/mros_quality_models.git

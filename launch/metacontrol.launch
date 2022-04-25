@@ -1,0 +1,63 @@
+<launch>
+
+  <arg name="rviz" default="true" />
+  <arg name="current_goal_file" default="$(find metacontrol_sim)/yaml/goal.yaml" />
+
+  ## Parameters for localization and map server
+  <!-- Initial pose -->
+  <arg name="initial_pose_x" default="0.0" />
+  <arg name="initial_pose_y" default="0.0" />
+  <arg name="initial_pose_a" default="0.0" />
+
+  <!-- Map file -->
+  <arg name="map_file" default="$(find metacontrol_nav)/maps/factory.yaml"/>
+
+<!-- Profile for navigation: -->
+<!-- fast / standard / safe: launches one of the baseline configurations -->
+<!-- fx_vx_rx : launches one of the metaconrol configurations -->
+  <arg name="nav_profile" default="dwa_v1_a0_b0"/>
+
+  <!-- Loads rosgraph_monitor and rosgraph_manipulator nodes -->
+  <include file="$(find metacontrol_sim)/launch/includes/rosgraph_nodes.launch.xml" />
+
+  <!-- Node to activate the observer -->
+  <node name="activate_observer_node" pkg="metacontrol_sim" type="activate_observer.py" output="screen">
+  </node>
+
+  <rosparam param="/gazebo_ros_control/pid_gains">
+    front_left_wheel:
+      p: 1
+      i: 0.1
+      d: 0
+    front_right_wheel:
+      p: 1
+      i: 0.1
+      d: 0
+    rear_left_wheel:
+      p: 1
+      i: 0.1
+      d: 0
+    rear_right_wheel:
+      p: 1
+      i: 0.1
+      d: 0
+  </rosparam>
+  <!-- Do NOT publish from node /ekf_localization in /diagnostics topic -->
+  <rosparam param="/ekf_localization/print_diagnostics">false</rosparam>
+
+  <node if="$(arg rviz)" type="rviz" name="rviz" pkg="rviz" args="-d $(find metacontrol_sim)/rviz/test_viz.rviz" />
+
+  <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)" />
+
+  <!--- Run Move Base -->
+  <include file="$(find metacontrol_nav)/launch/include/move_base_metacontrol.launch" >
+    <arg name="profile"  value="$(arg nav_profile)"/>
+  </include>
+
+  <!-- Node to send initial goal to move base -->
+  <!-- Set parameter to define the yaml file with current goal -->
+  <param name="/current_goal_yaml_file" type="string" value="$(arg current_goal_file)"/>
+  <node name="send_initial_goal_node" pkg="metacontrol_sim" type="send_goal_from_yaml.py" output="screen">
+  </node>
+
+</launch>
