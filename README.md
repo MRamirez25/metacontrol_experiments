@@ -32,7 +32,7 @@ In the following instructions, we assume that the ROS workspace is called `metac
 
 ```console
 cd ~/metacontrol_ws
-wstool init src https://raw.githubusercontent.com/rosin-project/metacontrol_experiments/master/metacontrol_experiments.rosinstall
+wstool init src https://raw.githubusercontent.com/Mramirez25/metacontrol_experiments/models21_experiments/metacontrol_experiments.rosinstall
 rosdep install --from-paths ./src -y -i -r --skip-keys="abb_rws_interface"
 ```
 
