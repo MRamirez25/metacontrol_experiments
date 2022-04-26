@@ -47,7 +47,7 @@ declare nfr_safety="0.4"
 
 ## Add unkown obstacles
 # Possible values (0: no obstalces, 1, 2 3)
-declare obstacles="0"
+declare obstacles="2"
 
 ## Modify power consumpton
 ## Changes when the euclidean distance to the goal is 0.6 of the initial one
@@ -161,14 +161,32 @@ cat $(rospack find metacontrol_experiments)/yaml/goal_positions.yaml | grep -w G
 echo ""
 echo "Start a new simulation - Goal position: $goal_position - Initial position  $init_position - Navigation profile: $nav_profile"
 echo ""
+
 echo "Launch roscore"
-
-bash -c "rosluanch tiago_gazebo tiago_gazebo.launch public_sim:=true"
-bash -c "roslaunch pal_navigation_cfg_tiago localization_fake.launch"
-
 gnome-terminal --window --geometry=80x24+10+10 -- bash -c "roscore; exit"
 #Sleep Needed to allow other launchers to recognize the roscore
 sleep 3
+
+# Added to launch the QA udpater from Jasper
+if [ "$qa_updater" = true ] ; then
+	echo "Launching: qa updater"
+	gnome-terminal --window --geometry=80x24+10+10 -- bash -c "
+	echo 'Launching: qa updater'
+	rosrun mros_quality_models quality_update.py;
+	echo 'mros qa updater finished';
+	exit"
+	sleep 4
+	for config in ${configs[@]} ; do
+		bash -c "
+		rosservice call /load_safety_model \"name: '$config'\""
+	done
+fi
+
+gnome-terminal --window --geometry=80x24+10+10 -- bash -c "roslaunch \
+                                                           metacontrol_experiments MVP_metacontrol_world.launch;
+exit"
+
+
 echo "Launching: MVP metacontrol world.launch"
 gnome-terminal --window --geometry=80x24+10+10 -- bash -c "roslaunch \
                                                            metacontrol_experiments metacontrol.launch \
@@ -195,7 +213,7 @@ if [ "$launch_reconfiguration" = true ] ; then
 	if [ '$close_reasoner_terminal' = false ] ; then read -rsn 1 -p 'Press any key to close this terminal...' echo; fi
 	exit"
 fi
-sleep 3
+sleep 10
 
 echo "Running log and stop simulation node"
 bash -c "roslaunch metacontrol_experiments stop_simulation.launch \
@@ -209,21 +227,6 @@ bash -c "roslaunch metacontrol_experiments stop_simulation.launch \
 		  nfr_energy:=$nfr_energy \
 		  nav_profile:=$nav_profile;
 exit "
-
-# Added to launch the QA udpater from Jasper
-if [ "$qa_updater" = true ] ; then
-	echo "Launching: qa updater"
-	gnome-terminal --window --geometry=80x24+10+10 -- bash -c "
-	echo 'Launching: qa updater'
-	rosrun mros_quality_models quality_update.py;
-	echo 'mros qa updater finished';
-	exit"
-	sleep 4
-	for config in ${configs[@]} ; do
-		bash -c "
-		rosservice call /load_safety_model \"name: '$config'\""
-	done
-fi
 
 echo "Simulation Finished!!"
 
