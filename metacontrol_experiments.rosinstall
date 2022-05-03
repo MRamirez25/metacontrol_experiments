@@ -15,7 +15,7 @@
     version: nav_quality
 - git:
     local-name: rosgraph_monitor
-    uri: https://github.com/JWijkhuizen/rosgraph_monitor
+    uri: https://github.com/MRamirez25/rosgraph_monitor
     version: nav_quality
 - git:
     local-name: ros_graph_parser

@@ -196,11 +196,6 @@ gnome-terminal --window --geometry=80x24+10+10 -- bash -c "roslaunch \
 														   initial_pose_y:=$init_pos_y;
 exit"
 
-#echo "Activating observers"
-#bash -c "source ~/metacontrol21_ws/devel/setup.bash;
-#rosrun metacontrol_sim activate_observers.py;
-#exit "
-
 if [ "$launch_reconfiguration" = true ] ; then
 	echo "Launching: mros reasoner"
 	gnome-terminal --window --geometry=80x24+10+10 -- bash -c "roslaunch \
@@ -208,7 +203,7 @@ if [ "$launch_reconfiguration" = true ] ; then
 															   desired_configuration:=$nav_profile \
 															   nfr_safety:=$nfr_safety \
 															   nfr_energy:=$nfr_energy\
-															   model:=/home/mariano/mros1_reasoner_ws/src/mros1_reasoner/mros1_reasoner/scripts/kb_nav_quality_v2.owl;
+															   model:=$(rospack find mros1_reasoner)/scripts/kb_nav_quality_v2.owl;
 	echo 'mros reasoner finished';
 	if [ '$close_reasoner_terminal' = false ] ; then read -rsn 1 -p 'Press any key to close this terminal...' echo; fi
 	exit"
