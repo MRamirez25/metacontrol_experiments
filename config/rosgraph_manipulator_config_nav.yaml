@@ -1,0 +1,70 @@
+reconfiguration_action_name: 'rosgraph_manipulator_action_server'
+configurations:
+    dwa_v0_a0_b0:
+        command: roslaunch dwa_v0_a0_b0 dwa_v0_a0_b0.launch
+    dwa_v0_a0_b1:
+        command: roslaunch dwa_v0_a0_b1 dwa_v0_a0_b1.launch
+    dwa_v0_a1_b0:
+        command: roslaunch dwa_v0_a1_b0 dwa_v0_a1_b0.launch
+    dwa_v0_a1_b1:
+        command: roslaunch dwa_v0_a1_b1 dwa_v0_a1_b1.launch
+    dwa_v1_a0_b0:
+        command: roslaunch dwa_v1_a0_b0 dwa_v1_a0_b0.launch
+    dwa_v1_a0_b1:
+        command: roslaunch dwa_v1_a0_b1 dwa_v1_a0_b1.launch
+    dwa_v1_a1_b0:
+        command: roslaunch dwa_v1_a1_b0 dwa_v1_a1_b0.launch
+    dwa_v1_a1_b1:
+        command: roslaunch dwa_v1_a1_b1 dwa_v1_a1_b1.launch
+    dwa_v2_a0_b0:
+        command: roslaunch dwa_v2_a0_b0 dwa_v2_a0_b0.launch
+    dwa_v2_a0_b1:
+        command: roslaunch dwa_v2_a0_b1 dwa_v2_a0_b1.launch
+    dwa_v2_a1_b0:
+        command: roslaunch dwa_v2_a1_b0 dwa_v2_a1_b0.launch
+    dwa_v2_a1_b1:
+        command: roslaunch dwa_v2_a1_b1 dwa_v2_a1_b1.launch
+    dwa_v3_a0_b0:
+        command: roslaunch dwa_v3_a0_b0 dwa_v3_a0_b0.launch
+    dwa_v3_a0_b1:
+        command: roslaunch dwa_v3_a0_b1 dwa_v3_a0_b1.launch
+    dwa_v3_a1_b0:
+        command: roslaunch dwa_v3_a1_b0 dwa_v3_a1_b0.launch
+    dwa_v3_a1_b1:
+        command: roslaunch dwa_v3_a1_b1 dwa_v3_a1_b1.launch
+    teb_v0_a0_b0:
+        command: roslaunch teb_v0_a0_b0 teb_v0_a0_b0.launch
+    teb_v0_a0_b1:
+        command: roslaunch teb_v0_a0_b1 teb_v0_a0_b1.launch
+    teb_v0_a1_b0:
+        command: roslaunch teb_v0_a1_b0 teb_v0_a1_b0.launch
+    teb_v0_a1_b1:
+        command: roslaunch teb_v0_a1_b1 teb_v0_a1_b1.launch
+    teb_v1_a0_b0:
+        command: roslaunch teb_v1_a0_b0 teb_v1_a0_b0.launch
+    teb_v1_a0_b1:
+        command: roslaunch teb_v1_a0_b1 teb_v1_a0_b1.launch
+    teb_v1_a1_b0:
+        command: roslaunch teb_v1_a1_b0 teb_v1_a1_b0.launch
+    teb_v1_a1_b1:
+        command: roslaunch teb_v1_a1_b1 teb_v1_a1_b1.launch
+    teb_v2_a0_b0:
+        command: roslaunch teb_v2_a0_b0 teb_v2_a0_b0.launch
+    teb_v2_a0_b1:
+        command: roslaunch teb_v2_a0_b1 teb_v2_a0_b1.launch
+    teb_v2_a1_b0:
+        command: roslaunch teb_v2_a1_b0 teb_v2_a1_b0.launch
+    teb_v2_a1_b1:
+        command: roslaunch teb_v2_a1_b1 teb_v2_a1_b1.launch
+    teb_v3_a0_b0:
+        command: roslaunch teb_v3_a0_b0 teb_v3_a0_b0.launch
+    teb_v3_a0_b1:
+        command: roslaunch teb_v3_a0_b1 teb_v3_a0_b1.launch
+    teb_v3_a1_b0:
+        command: roslaunch teb_v3_a1_b0 teb_v3_a1_b0.launch
+    teb_v3_a1_b1:
+        command: roslaunch teb_v3_a1_b1 teb_v3_a1_b1.launch
+
+kill_nodes: ['/move_base']
+save_action: 'move_base'
+goal_msg_type: move_base_msgs.msg.MoveBaseAction

@@ -1,0 +1,18 @@
+<launch>
+
+  <rosparam ns="rosgraph_manipulator" command="load" file="$(find mc_rosgraph_manipulator)/config/rosgraph_manipulator_config.yaml"/>
+
+  <node name="rosgraph_manipulator_node" pkg="mc_rosgraph_manipulator"
+        type="rosgraph_manipulator.py"
+        args="$(find metacontrol_experiments)/config/rosgraph_manipulator_config_nav.yaml"
+        output="screen">
+  </node>
+
+  <node name="rosgraph_monitor_node" pkg="rosgraph_monitor" type="monitor" output="screen">
+  </node>
+
+  <node name="ros_graph_parser_node" pkg="ros_graph_parser" type="ros_node" output="screen">
+  </node>
+
+
+</launch>

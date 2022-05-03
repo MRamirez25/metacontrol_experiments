@@ -1,0 +1,5 @@
+configs: ['dwa_v0_a0_b0', 'dwa_v0_a0_b1', 'dwa_v0_a1_b0', 'dwa_v0_a1_b1', 'dwa_v1_a0_b0', 'dwa_v1_a0_b1', 'dwa_v1_a1_b0',
+          'dwa_v1_a1_b1', 'dwa_v2_a0_b0', 'dwa_v2_a0_b1', 'dwa_v2_a1_b0', 'dwa_v2_a1_b1', 'dwa_v3_a0_b0', 'dwa_v3_a0_b1',
+          'dwa_v3_a1_b0', 'dwa_v3_a1_b1', 'teb_v0_a0_b0', 'teb_v0_a0_b1', 'teb_v0_a1_b0', 'teb_v0_a1_b1', 'teb_v1_a0_b0',
+          'teb_v1_a0_b1', 'teb_v1_a1_b0', 'teb_v1_a1_b1', 'teb_v2_a0_b0', 'teb_v2_a0_b1', 'teb_v2_a1_b0', 'teb_v2_a1_b1',
+          'teb_v3_a0_b0', 'teb_v3_a0_b1', 'teb_v3_a1_b0', 'teb_v3_a1_b1']

@@ -18,7 +18,7 @@
   <arg name="nav_profile" default="dwa_v1_a0_b0"/>
 
   <!-- Loads rosgraph_monitor and rosgraph_manipulator nodes -->
-  <include file="$(find metacontrol_sim)/launch/includes/rosgraph_nodes.launch.xml" />
+  <include file="$(find metacontrol_experiments)/launch/includes/rosgraph_nodes.launch.xml" />
 
   <!-- Node to activate the observer -->
   <node name="activate_observer_node" pkg="metacontrol_sim" type="activate_observer.py" output="screen">
