@@ -203,7 +203,7 @@ if [ "$launch_reconfiguration" = true ] ; then
 															   desired_configuration:=$nav_profile \
 															   nfr_safety:=$nfr_safety \
 															   nfr_energy:=$nfr_energy\
-															   model:=$(rospack find mros1_reasoner)/scripts/kb_nav_quality_v2.owl;
+															   model:=$(rospack find metacontrol_experiments)/scripts/kb_nav_quality_v2.owl;
 	echo 'mros reasoner finished';
 	if [ '$close_reasoner_terminal' = false ] ; then read -rsn 1 -p 'Press any key to close this terminal...' echo; fi
 	exit"
