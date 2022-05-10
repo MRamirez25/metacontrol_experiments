@@ -183,7 +183,7 @@ if [ "$qa_updater" = true ] ; then
 fi
 
 gnome-terminal --window --geometry=80x24+10+10 -- bash -c "roslaunch \
-                                                           metacontrol_experiments MVP_metacontrol_world.launch;
+                                                           metacontrol_experiments tiago_localization.launch;
 exit"
 
 
