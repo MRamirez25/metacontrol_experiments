@@ -21,7 +21,7 @@
   <include file="$(find metacontrol_experiments)/launch/includes/rosgraph_nodes.launch.xml" />
 
   <!-- Node to activate the observer -->
-  <node name="activate_observer_node" pkg="metacontrol_sim" type="activate_observer.py" output="screen">
+  <node name="activate_observer_node" pkg="metacontrol_experiments" type="activate_observer.py" output="screen">
   </node>
 
   <rosparam param="/gazebo_ros_control/pid_gains">

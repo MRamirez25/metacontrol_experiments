@@ -15,7 +15,7 @@ if __name__ == '__main__':
 
     # param = rosparam.load_file(rospack.get_path('metacontrol_sim')+'/yaml/goal.yaml')
     observer_dict = load(file(rospack.get_path(
-        'metacontrol_experiments')+'/yaml/observers.yaml', 'r'))
+        'metacontrol_experiments')+'/config/observers.yaml', 'r'))
     for observer_entry in observer_dict:
         print observer_entry
         observer_req = LoadControllerRequest()
