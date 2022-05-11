@@ -9,7 +9,6 @@
 	echo "          -o <obstacles: (0 / 1 / 2 / 3)>"
 	echo "          -p <increase_power: (0/1.1/1.2/1.3)>"
 	echo "          -b <record rosbags: ('true' / 'false')>"
-	echo "          -e <nfr energy threshold : ([0 - 1])>"
 	echo "          -s <nfr safety threshold : ([0 - 1])>"
 	echo "          -l <log frequency : [0 -10]) - If 0, no logs will be recorded>"
 	echo "          -c <close reasoner terminal : ('true' / 'false')>"
@@ -37,9 +36,6 @@ declare goal_position="1"
 ## Wheter or not to launch reconfiguration (true, false)
 declare launch_reconfiguration="true"
 
-## nfr energy threshold ([0 - 1])
-declare nfr_energy="0.6"
-
 ## nfr safety threshold ([0 - 1])
 declare nfr_safety="0.4"
 
@@ -49,11 +45,6 @@ declare nfr_safety="0.4"
 # Possible values (0: no obstalces, 1, 2 3)
 declare obstacles="2"
 
-## Modify power consumpton
-## Changes when the euclidean distance to the goal is 0.6 of the initial one
-# Possible values (0: no increase. Any value larger than 0, will be the increase power factor)
-declare increase_power="1.5"
-###
 
 ## Modify log frequency
 ## Frequency at wich log files are stored
@@ -187,7 +178,7 @@ gnome-terminal --window --geometry=80x24+10+10 -- bash -c "roslaunch \
 exit"
 
 
-echo "Launching: MVP metacontrol world.launch"
+echo "Launching: metacontrol.launch"
 gnome-terminal --window --geometry=80x24+10+10 -- bash -c "roslaunch \
                                                            metacontrol_experiments metacontrol.launch \
 														   nav_profile:=$nav_profile \
