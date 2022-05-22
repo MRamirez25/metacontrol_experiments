@@ -37,13 +37,13 @@ declare goal_position="1"
 declare launch_reconfiguration="true"
 
 ## nfr safety threshold ([0 - 1])
-declare nfr_safety="0.4"
+declare nfr_safety="0.1"
 
 ## Perturbations
 
 ## Add unkown obstacles
 # Possible values (0: no obstalces, 1, 2 3)
-declare obstacles="2"
+declare obstacles="3"
 
 
 ## Modify log frequency
