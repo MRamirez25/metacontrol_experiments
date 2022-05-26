@@ -51,4 +51,4 @@
     version: metacontrol_models
 - git:
     local-name: mros_quality_models
-    uri: https://github.com/JWijkhuizen/mros_quality_models.git
+    uri: https://github.com/MRamirez25/mros_quality_models.git
