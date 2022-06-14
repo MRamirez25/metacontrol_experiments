@@ -1,10 +1,99 @@
+# Research Assignment
+### "Integrating expected quality attribute predictions and the TIAGo robot with MROS1"
 
-# metacontrol_experiments
+This fork was made for a research assignment supervised by Carlos Hernandez
+Corbato, where work done by Jasper Wijkhuizen on QA predictions was integrated
+into the latest version of [MROS1](https://doi.org/10.1109/RoSE52553.2021.00011).
+Modifications were also made to the current experimental setup from the original 
+repository to work with a new robot, TIAGo. The original README is included below
+for completeness. 
+
+## Installation
+First, we need to install the pre-requisities for MROS, and get the MROS packages:
+
+- Install java jre
+
+```console
+sudo apt-get install openjdk-11-jre
+```
+
+- Create a workspace (with any preferred name) and a “src” directory within it:
+```console
+mkdir -p ~/metacontrol_ws/src
+cd metacontrol_ws
+```
+
+- Setup the dependencies (note you need wstool for this)
+```console
+cd ~/metacontrol_ws
+wstool init src https://raw.githubusercontent.com/Mramirez25/metacontrol_experiments/models21_experiments/metacontrol_experiments.rosinstall
+source /opt/ros/melodic/setup.bash
+rosdep install --from-paths ./src -y -i -r --skip-keys="abb_rws_interface"
+```
+
+Now we need to get the TIAGo packages. This can be done by following the instructions in the 
+[AIRLab repository](https://gitlab.tudelft.nl/airlab-delft/ng-staging/retail_store_simulation).
+If you don't have access to this repository, you should also be able to get the needed TIAGo packages 
+by following the instructions [here](http://wiki.ros.org/Robots/TIAGo\%2B\%2B/Tutorials/Installation/InstallUbuntuAndROS). 
+The steps from the AIRLab repository are also included below:
+
+
+- Clone the repository and clone the dependencies using vcstool:
+```console
+cd ~/metacontrol_ws/src
+git clone git@gitlab.tudelft.nl:airlab-delft/ng-staging/retail_store_simulation.git
+vcs import --input retail_store_simulation/retail_store_simulation.rosinstall .
+cd ..
+```
+
+- Use rosdep to get all other dependencies:
+```console
+sudo rosdep init
+rosdep update
+rosdep install --from-paths src --ignore-src --rosdistro melodic \
+--skip-keys="opencv2 opencv2-nonfree pal_laser_filters speed_limit_node \
+sensor_to_cloud hokuyo_node libdw-dev python-graphitesend-pip \ 
+python-statsd pal_filters pal_vo_server pal_usb_utils pal_pcl \
+pal_pcl_points_throttle_and_filter pal_karto pal_local_joint_control \
+camera_calibration_files pal_startup_msgs pal-orbbec-openni2 \
+dummy_actuators_manager pal_local_planner gravity_compensation_controller \
+current_limit_controller dynamic_footprint dynamixel_cpp tf_lookup \ 
+slam_toolbox joint_impedance_trajectory_controller \ 
+cartesian_impedance_controller omni_base_description omni_drive_controller"
+```
+
+Now we have all the packages we need, and can build our workspace:
+```console
+catkin build
+```
+
+Finally, source your workspace and then run the run_single_sim_desktop_tiago.sh bash script:
+```console
+source devel/setup.bash
+roscd metacontrol_experiments
+./run_single_sim_desktop_tiago.sh
+```
+
+What you will then see is a simulation where TIAGo has the goal of navigating to a point. Apart from a map with 
+the known obstacles (visible in RViz), some random unknown obstacles are created (these can be seen in Gazebo as 
+the blue pillars). At some point TIAGo will navigate very close to two of these new obstacles, causing the safety 
+to go above the given threshold, and triggering a reconfiguration, which can be seen in the terminal showing the 
+reasoner output. 
+
+A video showing this simulation being run can be found [here](https://youtu.be/rPMegtRgl_w). The reasoner terminal 
+is also shown in this video, where you can see when the reconfiguration occurs. Also note that data about each 
+run is recorded in a CSV file in the `metacontrol_experiments/data` directory.
+
+&nbsp;
+
+---
+
+
+# Original metacontrol_experiments README
 
 This package runs and controls batch simulations of the [metacontrol_sim](https://github.com/rosin-project/metacontrol_sim) package, it can create contingencies that should result in reconfigurations of the navigation stack.
 
 ## Installation
-
 ### Install java jre
 
 The experiments use the [`mros_reasoner`](https://github.com/tud-cor/mc_mros_reasoner) for the reconfiguration, and to run this a java jre is required.
