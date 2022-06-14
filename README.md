@@ -9,6 +9,9 @@ repository to work with a new robot, TIAGo. The original README is included belo
 for completeness. 
 
 ## Installation
+**Pre-requisites:** It is assumed that you already have an installation of Ubuntu 18.04 
+and ROS Melodic. The Python libraries 'numpy' and 'sklearn' are also required.
+
 First, we need to install the pre-requisities for MROS, and get the MROS packages:
 
 - Install java jre
